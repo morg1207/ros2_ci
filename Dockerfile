@@ -42,6 +42,7 @@ RUN apt-get update && apt-get install -y \
 # Create a volume for ROS packages
 
 RUN git clone -b ros2-galactic https://github.com/rigbetellabs/tortoisebot.git /ros2_ws/src/tortoisebot
+RUN git clone https://github.com/morg1207/tortoisebot_waypoints_ros2_test.git /ros2_ws/src/tortoisebot/tortoisebot_waypoints
 
 RUN echo 
 
@@ -52,8 +53,6 @@ RUN rm -rf  \
     /ros2_ws/src/tortoisebot/tortoisebot_bringup \
     /ros2_ws/src/tortoisebot/tortoisebot_slam \
     /ros2_ws/src/tortoisebot/ydlidar-ros2 
-
-COPY ./entrypoints /entrypoints
 
 COPY ./tortoisebot/tortoisebot_bringup /ros2_ws/src/tortoisebot/tortoisebot_bringup
 COPY ./tortoisebot/ydlidar-ros2 /ros2_ws/src/tortoisebot/ydlidar-ros2
