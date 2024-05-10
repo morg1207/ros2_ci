@@ -55,6 +55,8 @@ RUN source /opt/ros/galactic/setup.bash \
     && colcon build \
     && source /ros2_ws/install/setup.bash
 
+WORKDIR /ros2_ws/src/tortoisebot/tortoisebot_waypoints
+
 RUN git checkout jenkins_build
 
 RUN source /opt/ros/galactic/setup.bash \
