@@ -50,7 +50,7 @@ pipeline {
                 sh '''
                 sudo usermod -aG docker $USER
                 newgrp docker
-                sudo docker run --rm --name tortoisebot_ros2_container -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix tortoisebot_test:latest &
+                sudo docker run --rm --name tortoisebot_ros2_container -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix tortoisebot_ros2_test:latest &
                 sleep 10
                 sudo usermod -aG docker $USER
                 newgrp docker
