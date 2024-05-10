@@ -54,7 +54,6 @@ pipeline {
                 sleep 10
                 sudo usermod -aG docker $USER
                 newgrp docker
-                sudo docker exec tortoisebot_ros2_container /bin/bash -c ". /opt/ros/galactic/setup.bash && . /ros2_ws/install/setup.bash && colcon test --packages-select tortoisebot_waypoints --event-handler=console_direct+"
                 '''
 
             }
@@ -62,7 +61,7 @@ pipeline {
         stage('Done') {
             steps {
                 sleep 2
-                sh 'sudo docker rm -f tortoisebot_ros2_container'
+                //sh 'sudo docker rm -f tortoisebot_ros2_container'
                 echo 'Pipeline completed'
             }
         }
