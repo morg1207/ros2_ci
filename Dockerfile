@@ -41,19 +41,29 @@ RUN apt-get update && apt-get install -y \
 
 # Create a volume for ROS packages
 
-RUN git clone -b ros2-galactic https://github.com/rigbetellabs/tortoisebot.git /ros2_ws/src/
-RUN git clone https://github.com/morg1207/tortoisebot_waypoints.git /ros2_ws/src/tortoisebot
+RUN git clone -b ros2-galactic https://github.com/rigbetellabs/tortoisebot.git /ros2_ws/src/tortoisebot/
 
-#run rm -rf /ros2_ws/src/tortoisebot/tortoisebot_control/
+WORKDIR /ros2_ws/src/tortoisebot/
 
+RUN git clone -b msg_build https://github.com/morg1207/tortoisebot_waypoints.git 
+
+run rm -rf /ros2_ws/src/tortoisebot/tortoisebot_control/
 
 # Build the Catkin workspace
-#RUN source /opt/ros/galactic/setup.bash \
- #   && cd /ros2_ws \
-  #  && colcon build
+RUN source /opt/ros/galactic/setup.bash \
+    && cd /ros2_ws \
+    && colcon build
+    && source /ros2_ws/install/setup.bash
+
+RUN git clone -b jenkins_build https://github.com/morg1207/tortoisebot_waypoints.git 
+
+RUN source /opt/ros/galactic/setup.bash \
+    && cd /ros2_ws \
+    && colcon build
+    && source /ros2_ws/install/setup.
 
 # Ensure the workspace is sourced
-#RUN echo "source /ros2_ws/install/setup.bash" >> ~/.bashrc
+RUN echo "source /ros2_ws/install/setup.bash" >> ~/.bashrc
 
 # Set the entry point to start the ROS launch file
-#ENTRYPOINT ["/bin/bash", "-c", "source /ros2_ws/install/setup.bash && ros2 launch tortoisebot_bringup bringup.launch.py use_sim_time:=True"]
+ENTRYPOINT ["/bin/bash", "-c", "source /ros2_ws/install/setup.bash && ros2 launch tortoisebot_bringup bringup.launch.py use_sim_time:=True"]
