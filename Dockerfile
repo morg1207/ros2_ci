@@ -42,14 +42,8 @@ RUN apt-get update && apt-get install -y \
 # Create a volume for ROS packages
 
 RUN git clone -b ros2-galactic https://github.com/rigbetellabs/tortoisebot.git /ros2_ws/src/
-RUN git clone https://github.com/morg1207/tortoisebot_waypoints.git /ros2_ws/src/tortoisebot/
+RUN git clone https://github.com/morg1207/tortoisebot_waypoints.git /ros2_ws/src/tortoisebot
 
-RUN echo 
-
-RUN rm -rf  \ 
-    /ros2_ws/src/tortoisebot/tortoisebot_firmware \
-    /ros2_ws/src/tortoisebot/tortoisebot_bringup \
-    /ros2_ws/src/tortoisebot/ydlidar-ros2 
 
 # Build the Catkin workspace
 RUN source /opt/ros/galactic/setup.bash \
