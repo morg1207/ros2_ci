@@ -52,14 +52,14 @@ run rm -rf /ros2_ws/src/tortoisebot/tortoisebot_control/
 # Build the Catkin workspace
 RUN source /opt/ros/galactic/setup.bash \
     && cd /ros2_ws \
-    && colcon build
+    && colcon build \
     && source /ros2_ws/install/setup.bash
 
 RUN git clone -b jenkins_build https://github.com/morg1207/tortoisebot_waypoints.git 
 
 RUN source /opt/ros/galactic/setup.bash \
     && cd /ros2_ws \
-    && colcon build
+    && colcon build \
     && source /ros2_ws/install/setup.bash
 
 # Ensure the workspace is sourced
