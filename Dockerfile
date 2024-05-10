@@ -55,7 +55,7 @@ RUN source /opt/ros/galactic/setup.bash \
     && colcon build \
     && source /ros2_ws/install/setup.bash
 
-RUN git clone -b jenkins_build https://github.com/morg1207/tortoisebot_waypoints.git 
+RUN git checkout jenkins_build
 
 RUN source /opt/ros/galactic/setup.bash \
     && cd /ros2_ws \
