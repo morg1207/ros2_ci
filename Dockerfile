@@ -54,9 +54,6 @@ RUN rm -rf  \
     /ros2_ws/src/tortoisebot/tortoisebot_slam \
     /ros2_ws/src/tortoisebot/ydlidar-ros2 
 
-COPY ./tortoisebot/tortoisebot_bringup /ros2_ws/src/tortoisebot/tortoisebot_bringup
-COPY ./tortoisebot/ydlidar-ros2 /ros2_ws/src/tortoisebot/ydlidar-ros2
-
 # Build the Catkin workspace
 RUN source /opt/ros/galactic/setup.bash \
     && cd /ros2_ws \
