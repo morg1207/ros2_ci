@@ -18,7 +18,7 @@ pipeline {
                     dir('/home/user/ros2_jenkins_ws/src') {
                         echo 'Will check if we need to clone or just pull'
                         // Comprobar si el directorio move_and_turn ya existe
-                        if (!fileExists('ros1_c2')) {
+                        if (!fileExists('ros2_ci')) {
                             // Si no existe, clonar el repositorio
                             sh 'git clone https://github.com/morg1207/ros2_ci.git'
                         } else {
