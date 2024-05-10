@@ -52,7 +52,7 @@ pipeline {
                 newgrp docker
                 sudo docker run --rm --name tortoisebot_ros2_container -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix tortoisebot_ros2_test:latest &
                 sleep 10
-                sudo docker exec tortoisebot_ros2_container /bin/bash -c ". /opt/ros/galactic/setup.bash && cd /ros2_ws && colcon build && . /ros2_ws/install/setup.bash && colcon test --packages-select tortoisebot_waypoints --event-handler=console_direct+"
+                sudo docker exec tortoisebot_ros2_container /bin/bash -c ". /opt/ros/galactic/setup.bash && cd /ros2_ws && colcon build && . /ros2_ws/install/setup.bash && colcon test --packages-select tortoisebot_waypoints --event-handler=console_direct+ && colcon test-result --all --verbose"
                 sudo usermod -aG docker $USER
                 newgrp docker
                 '''
