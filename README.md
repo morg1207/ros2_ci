@@ -31,4 +31,4 @@ Execute these steps in the command line interface:
 ```console
 git add .
 git commit -m "Created file to test"
-git push origin mater
+git push origin master
