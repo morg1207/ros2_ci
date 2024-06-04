@@ -1,6 +1,15 @@
 pipeline {
     agent any 
     stages {
+
+        stage('SCM') {
+            steps {
+                script {
+                    properties([pipelineTriggers([pollSCM('* * * * *')])])
+                }
+                git branch: 'master', url: 'https://github.com/morg1207/ros2_ci.git'
+            }
+        }
         stage('Create workspace and build') {
             steps {
                 sh 'mkdir -p ~/ros2_jenkins_ws/src'
