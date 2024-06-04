@@ -7,23 +7,13 @@ pipeline {
                 script {
                     properties([pipelineTriggers([pollSCM('* * * * *')])])
                 }
-                git branch: 'master', url: 'https://github.com/morg1207/ros2_ci.git'
-            }
-        }
-        stage('Create workspace and build') {
-            steps {
-                sh 'mkdir -p ~/ros2_jenkins_ws/src'
-                sh '''
-                cd ~/ros2_jenkins_ws
-                source /opt/ros/galactic/setup.bash
-                colcon build
-                '''
+                git branch: 'main', url: 'https://github.com/morg1207/ros2_ci.git'
             }
         }
         stage('Clone or Update Repo') {
             steps {
                 sh '''
-                cd ~/ros2_jenkins_ws/src
+                cd ~/ros2_ws/src
                 if [ ! -d "ros2_ci" ]; then
                     git clone https://github.com/morg1207/ros2_ci.git
                     echo 'No existe el repositorio, clonando...'
@@ -43,7 +33,7 @@ pipeline {
                 sudo service docker start
                 sudo usermod -aG docker $USER
                 newgrp docker
-                cd ~/ros2_jenkins_ws/src/ros2_ci 
+                cd ~/ros2_ws/src/ros2_ci 
                 sudo docker build -t tortoisebot_ros2_test .
                 '''
             }
