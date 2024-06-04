@@ -23,7 +23,7 @@ pipeline {
         stage('Clone or Update Repo') {
             steps {
                 sh '''
-                cd ~/ros_jenkins_ws/src
+                cd ~/ros2_jenkins_ws/src
                 if [ ! -d "ros2_ci" ]; then
                     git clone https://github.com/morg1207/ros2_ci.git
                     echo 'No existe el repositorio, clonando...'
