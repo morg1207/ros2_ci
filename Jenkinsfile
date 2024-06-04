@@ -19,7 +19,7 @@ pipeline {
                     echo 'No existe el repositorio, clonando...'
                 else
                     cd ros2_ci
-                    git pull origin master
+                    git pull origin main
                     echo 'Existe el repositorio, actualizando...'
                 fi
                 '''
