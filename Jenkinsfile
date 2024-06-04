@@ -20,18 +20,19 @@ pipeline {
                 '''
             }
         }
-        stage('Will check if we need to clone or just pull') {
+        stage('Clone or Update Repo') {
             steps {
-                sh 'cd ~/ros2_jenkins_ws/src'
                 sh '''
-                    #!/bin/bash
-                    if [ ! -d "ros2_ci" ]; then
-                        git clone https://github.com/morg1207/ros2_ci.git
-                    else
-                        cd ros2_ci
-                        git pull origin master
-                    fi
-                    '''
+                cd ~/ros_jenkins_ws/src
+                if [ ! -d "ros1_ci_1" ]; then
+                    git clone https://github.com/morg1207/ros1_ci_1.git
+                    echo 'No existe el repositorio, clonando...'
+                else
+                    cd ros1_ci_1
+                    git pull origin master
+                    echo 'Existe el repositorio, actualizando...'
+                fi
+                '''
             }
         }
         stage(' install and build docker image') {
