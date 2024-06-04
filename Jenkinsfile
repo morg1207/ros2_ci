@@ -24,11 +24,11 @@ pipeline {
             steps {
                 sh '''
                 cd ~/ros_jenkins_ws/src
-                if [ ! -d "ros1_ci_1" ]; then
-                    git clone https://github.com/morg1207/ros1_ci_1.git
+                if [ ! -d "ros2_ci" ]; then
+                    git clone https://github.com/morg1207/ros2_ci.git
                     echo 'No existe el repositorio, clonando...'
                 else
-                    cd ros1_ci_1
+                    cd ros2_ci
                     git pull origin master
                     echo 'Existe el repositorio, actualizando...'
                 fi
