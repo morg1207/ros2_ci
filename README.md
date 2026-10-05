@@ -6,11 +6,9 @@ cd
 source run_jenkins.sh
 cat jenkins__pid__url.txt
 ```
-### Access the Jenkins URL and log in with the following credentials:
-```
-Username: user
-Password: s@mmd7ca91
-```
+### Access the Jenkins URL and log in with your Jenkins credentials.
+> Credentials are not stored in this repository.
+
 ### Build Jenkins
 ```
 Enter the following job: tortoisebot_cli_ros2
